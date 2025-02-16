@@ -6,20 +6,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import ru.skillbox.statisticsservice.model.enums.ObjectType;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Document(collection = "events")
 @Data
 public class Event {
 
     @Id
-    private UUID uuid;
+    private String uuid;
 
     private LocalDateTime dateTime;
 
     private ObjectType objectType;
 
-    private UUID objectId;
+    private String objectId;
 
-    private UUID initiatorUserId;
+    private String initiatorUserId;
 }

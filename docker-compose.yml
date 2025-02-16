@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mongodb:
+    image: bitnami/mongodb:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data:/bitnami/mongodb
+      - ./src/main/resources/mongo-certs:/certificates
+    environment:
+      - MONGODB_ROOT_PASSWORD=root
+      - MONGODB_DATABASE=statistics
+      - MONGODB_USERNAME=test
+      - MONGODB_PASSWORD=test
+      - MONGODB_EXTRA_FLAGS=--tlsMode=requireTLS --tlsCertificateKeyFile=/certificates/mongo_cert.pem --tlsCAFile=/certificates/ca.pem
+      - MONGODB_CLIENT_EXTRA_FLAGS=--tls --tlsCAFile=/certificates/ca.pem --tlsCertificateKeyFile=/certificates/mongo_cert.pem
+
+
+volumes:
+  mongodb_data:
